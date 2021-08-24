@@ -52,6 +52,7 @@ from random import randint
 from PIL import Image
 import numpy as np
 import matplotlib.pyplot as plt
+import os
 
 import pycuda.driver as cuda
 # This import causes pycuda to automatically manage CUDA context creation and cleanup.
@@ -85,11 +86,16 @@ def build_engine(model_file):
 
 # Loads a test case into the provided pagelocked_buffer.
 def load_normalized_test_case(data_paths, pagelocked_buffer, case_num):
-    [test_case_path] = common.locate_files(data_paths, [str(case_num) + ".pgm"])
+    [test_case_path] = common.locate_files(data_paths, [str(case_num)])
     # Flatten the image into a 1D array, normalize, and copy to pagelocked memory.
     img = np.array(Image.open(test_case_path)).ravel()
     np.copyto(pagelocked_buffer, 1.0 - img / 255.0)
     return case_num
+
+def load_files_names():
+    array_list = os.listdir('test')
+    return array_list
+
 
 def make_label_array(x):
     array_label = np.zeros(10)
@@ -116,28 +122,32 @@ def main():
     data_paths, _ = common.find_sample_data(description="Runs an MNIST network using a UFF model file", subfolder="mnist")
     model_path = os.environ.get("MODEL_PATH") or os.path.join(os.path.dirname(__file__), "models")
     model_file = os.path.join(model_path, ModelData.MODEL_FILE)
-    data_to_displayC = np.zeros(10)
-    data_to_displayL = np.zeros(10)
+    data_to_displayC = np.zeros(10000)
+    data_to_displayL = np.zeros(10000)
+
+    array_files = load_files_names()
+    #print(array_files)
+    print('Ilosc danych do testowania: ' + str(len(array_files)))
+    i = 0
 
     with build_engine(model_file) as engine:
         # Build an engine, allocate buffers and create a stream.
         # For more information on buffer allocation, refer to the introductory samples.
         inputs, outputs, bindings, stream = common.allocate_buffers(engine)
         with engine.create_execution_context() as context:
-            for x in range(10):
+            for x in array_files:
                 case_num = load_normalized_test_case(data_paths, pagelocked_buffer=inputs[0].host, case_num = x)
-                array_label = make_label_array(x)
+                number = int(x[0])
+                array_label = make_label_array(number)
                 # For more information on performing inference, refer to the introductory samples.
                 # The common.do_inference function will return a list of outputs - we only have one in this case.
                 [output] = common.do_inference(context, bindings=bindings, inputs=inputs, outputs=outputs, stream=stream)
                 pred = np.argmax(output)
                 confidence = np.max(output)
-                data_to_displayC[x] = confidence
+                data_to_displayC[i] = confidence
                 loss_conf_crossEntropy = - np.sum(np.log(output)*array_label)
-                data_to_displayL[x] = loss_conf_crossEntropy
-                print("Test Case: " + str(case_num))
-                print("Prediction: " + str(pred))
-                print("**********************************************************************" )
+                data_to_displayL[i] = loss_conf_crossEntropy
+                i=i+1
                 
     avgC = np.average(data_to_displayC)
     avgL = np.average(data_to_displayL)

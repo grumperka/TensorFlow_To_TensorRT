@@ -121,6 +121,9 @@ def main():
     height_shift_range=0.1,
     horizontal_flip=False,
     vertical_flip=False)
+
+    datagen_files = ImageDataGenerator()
+    #test_files = datagen_files.flow_from_directory('/home/grumperka/Pulpit/data', target_size=(28,28))
     
     model = create_model()
     # Train the model on the data
@@ -130,6 +133,9 @@ def main():
     print("Avg Accuracy: " + str(test_acc))
     print("Avg Loss: " + str(test_loss))
     save(model, filename="models/lenet5.pb")
+    #test_files = np.reshape(test_files, (10, 28, 28, 1))
+    #test_gen_data=model.evaluate_generator(test_files, steps=1)
+    #print('Gen: ' + test_gen_data)
     draw_curves(history, key1='acc', ylim1=(0.7, 1.2), key2='loss', ylim2=(0.0, 0.6))
 
 if __name__ == '__main__':
