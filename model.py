@@ -129,7 +129,7 @@ def main():
     # Train the model on the data
     history = model.fit(datagen.flow(x_train, y_train, batch_size=64), validation_data=(x_test, y_test), epochs = 18, verbose = 1)
     # Evaluate the model on test data
-    test_loss, test_acc = historyE = model.evaluate(x_test[:10], y_test[:10])
+    test_loss, test_acc = historyE = model.evaluate(x_test, y_test)
     print("Avg Accuracy: " + str(test_acc))
     print("Avg Loss: " + str(test_loss))
     save(model, filename="models/lenet5.pb")
