@@ -53,6 +53,7 @@ from PIL import Image
 import numpy as np
 import matplotlib.pyplot as plt
 import os
+import time
 
 import pycuda.driver as cuda
 # This import causes pycuda to automatically manage CUDA context creation and cleanup.
@@ -130,6 +131,8 @@ def main():
     print('Ilosc danych do testowania: ' + str(len(array_files)))
     i = 0
 
+    time_check = np.zeros(10000)
+
     with build_engine(model_file) as engine:
         # Build an engine, allocate buffers and create a stream.
         # For more information on buffer allocation, refer to the introductory samples.
@@ -141,7 +144,10 @@ def main():
                 array_label = make_label_array(number)
                 # For more information on performing inference, refer to the introductory samples.
                 # The common.do_inference function will return a list of outputs - we only have one in this case.
+                time_start = time.perf_counter()
                 [output] = common.do_inference(context, bindings=bindings, inputs=inputs, outputs=outputs, stream=stream)
+                time_stop = time.perf_counter()
+                time_check[i] = time_stop - time_start
                 pred = np.argmax(output)
                 confidence = np.max(output)
                 data_to_displayC[i] = confidence
@@ -149,10 +155,12 @@ def main():
                 data_to_displayL[i] = loss_conf_crossEntropy
                 i=i+1
                 
+    
     avgC = np.average(data_to_displayC)
     avgL = np.average(data_to_displayL)
     print("Avg Accuracy: " + str(avgC))
     print("Avg Loss: " + str(avgL))
+    print("Time: " + str(sum(time_check)) + ' s')
     draw_curves(data_to_displayC, data_to_displayL)
 
 if __name__ == '__main__':
