@@ -161,7 +161,7 @@ def main():
     print("Avg Accuracy: " + str(avgC))
     print("Avg Loss: " + str(avgL))
     print("Time: " + str(sum(time_check)) + ' s')
-    draw_curves(data_to_displayC, data_to_displayL)
+    #draw_curves(data_to_displayC, data_to_displayL)
 
 if __name__ == '__main__':
     main()
