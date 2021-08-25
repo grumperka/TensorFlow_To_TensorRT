@@ -111,6 +111,19 @@ def draw_curves(history, key1='accuracy', ylim1=(0.8, 1.00), key2='loss', ylim2=
     plt.legend(['treningowa', 'testowa'], loc='best')
     plt.show()
 
+def display_test_pictures(x_test, y_test):
+    class_names = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+    plt.figure(figsize=(14, 10))
+    for i in range(40):
+        plt.subplot(5, 8, i + 1)
+        plt.xticks([])
+        plt.yticks([])
+        plt.grid(False)
+        plt.imshow(x_test[i], cmap=plt.cm.binary)
+        plt.xlabel(class_names[y_test[i]])
+    plt.show()
+
+
 def main():
     x_train, y_train, x_test, y_test = process_dataset()
 
@@ -129,6 +142,7 @@ def main():
     # Train the model on the data
     history = model.fit(datagen.flow(x_train, y_train, batch_size=64), validation_data=(x_test, y_test), epochs = 18, verbose = 1)
     # Evaluate the model on test data
+    display_test_pictures(x_test, y_test)
     test_loss, test_acc = historyE = model.evaluate(x_test, y_test)
     print("Avg Accuracy: " + str(test_acc))
     print("Avg Loss: " + str(test_loss))
