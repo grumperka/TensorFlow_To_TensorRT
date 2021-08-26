@@ -72,11 +72,11 @@ def create_model():
     model.add(tf.keras.layers.InputLayer(input_shape=[28,28, 1]))
     model.add(tf.keras.layers.Conv2D(32, kernel_size=[3, 3], activation=tf.nn.relu, input_shape=[28, 28, 1]))
     model.add(tf.keras.layers.MaxPool2D(pool_size=[2, 2])) 
-    #model.add(tf.keras.layers.Dropout(0.25))
+    
     model.add(tf.keras.layers.Conv2D(64, kernel_size=[3, 3], activation=tf.nn.relu))
     model.add(tf.keras.layers.Conv2D(64, kernel_size=[3, 3], activation=tf.nn.relu))
     model.add(tf.keras.layers.MaxPool2D(pool_size=[2, 2]))
-    #model.add(tf.keras.layers.Dropout(0.5)) 
+
     model.add(tf.keras.layers.Flatten())
     model.add(tf.keras.layers.Dense(64, activation=tf.nn.relu))
     model.add(tf.keras.layers.Dense(10, activation=tf.nn.softmax))
@@ -136,22 +136,19 @@ def main():
     height_shift_range=0.1,
     horizontal_flip=False,
     vertical_flip=False)
-
-    datagen_files = ImageDataGenerator()
-    #test_files = datagen_files.flow_from_directory('/home/grumperka/Pulpit/data', target_size=(28,28))
     
     model = create_model()
     # Train the model on the data
     history = model.fit(datagen.flow(x_train, y_train, batch_size=64), validation_data=(x_test, y_test), epochs = 18, verbose = 1)
     # Evaluate the model on test data
+
     display_test_pictures(x_test, y_test)
+
     test_loss, test_acc = historyE = model.evaluate(x_test, y_test)
     print("Avg Accuracy: " + str(test_acc))
     print("Avg Loss: " + str(test_loss))
+    
     save(model, filename="models/lenet5.pb")
-    #test_files = np.reshape(test_files, (10, 28, 28, 1))
-    #test_gen_data=model.evaluate_generator(test_files, steps=1)
-    #print('Gen: ' + test_gen_data)
     draw_curves(history, key1='acc', ylim1=(0.7, 1.2), key2='loss', ylim2=(0.0, 0.6))
 
 if __name__ == '__main__':
