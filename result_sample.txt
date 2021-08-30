@@ -1,150 +1,180 @@
 WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
-Avg Accuracy: 0.9964529117196799
-Avg Loss: 0.014098482875351422
-Time: 1.5768082239976593 s
+Avg Accuracy: 0.9959614678740502
+Avg Loss: 0.019565920270290003
+Time: 1.6235574639968036 s
 WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
-Avg Accuracy: 0.9964529116779566
-Avg Loss: 0.01409848226422628
-Time: 1.025794992999863 s
+Avg Accuracy: 0.9959614678740502
+Avg Loss: 0.019565920270290003
+Time: 0.9321991459805758 s
 WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
-Avg Accuracy: 0.9964529117196799
-Avg Loss: 0.014098482875351422
-Time: 0.9112611439946932 s
+Avg Accuracy: 0.9959614678740502
+Avg Loss: 0.019565920270290003
+Time: 0.8372150320069522 s
 WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
-Avg Accuracy: 0.9964529116779566
-Avg Loss: 0.01409848226422628
-Time: 0.8858505909959149 s
+Avg Accuracy: 0.9959614676594735
+Avg Loss: 0.019565920153470136
+Time: 0.939747435983918 s
 WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
-Avg Accuracy: 0.9964529117196799
-Avg Loss: 0.014098482875351422
-Time: 0.8843831809912217 s
+Avg Accuracy: 0.9959614675343037
+Avg Loss: 0.019565919601064883
+Time: 0.8737368140295985 s
 WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
-Avg Accuracy: 0.9964529116779566
-Avg Loss: 0.01409848226422628
-Time: 0.8349916309898617 s
+Avg Accuracy: 0.9959614675343037
+Avg Loss: 0.019565919601064883
+Time: 0.8409033959942462 s
 WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
-Avg Accuracy: 0.996452911734581
-Avg Loss: 0.014098482752460497
-Time: 0.859009047006225 s
+Avg Accuracy: 0.9959614675343037
+Avg Loss: 0.019565919601064883
+Time: 0.8421226729915361 s
 WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
-Avg Accuracy: 0.9964529118865728
-Avg Loss: 0.014098482089056145
-Time: 0.8548162900058287 s
+Avg Accuracy: 0.9959614678740502
+Avg Loss: 0.019565920270290003
+Time: 0.8661314950090855 s
 WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
-Avg Accuracy: 0.9964529117196799
-Avg Loss: 0.014098482875351422
-Time: 0.8383479919988304 s
+Avg Accuracy: 0.9959614678740502
+Avg Loss: 0.019565920270290003
+Time: 0.8369495750289389 s
 WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
-Avg Accuracy: 0.9964529117196799
-Avg Loss: 0.014098482875351422
-Time: 0.8699852939920447 s
+Avg Accuracy: 0.9959614678740502
+Avg Loss: 0.019565920270290003
+Time: 0.8650847980156868 s
 WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
-Avg Accuracy: 0.9964529116779566
-Avg Loss: 0.01409848226422628
-Time: 0.9261374620073184 s
+Avg Accuracy: 0.9959614675343037
+Avg Loss: 0.019565919601064883
+Time: 0.908174718023929 s
 WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
-Avg Accuracy: 0.9964529116779566
-Avg Loss: 0.014098482276097368
-Time: 0.9259472570035996 s
+Avg Accuracy: 0.9959614681303501
+Avg Loss: 0.019565921809542208
+Time: 0.8548308919985175 s
 WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
-Avg Accuracy: 0.9964529116779566
-Avg Loss: 0.01409848226422628
-Time: 0.8398602549966654 s
+Avg Accuracy: 0.9959614675343037
+Avg Loss: 0.019565919601064883
+Time: 0.8665410670209894 s
 WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
-Avg Accuracy: 0.996452911734581
-Avg Loss: 0.014098482752460497
-Time: 0.8354597269955093 s
+Avg Accuracy: 0.9959614678740502
+Avg Loss: 0.019565920270290003
+Time: 0.8669985839655965 s
 WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
-Avg Accuracy: 0.9964529116779566
-Avg Loss: 0.014098482276097368
-Time: 0.8801976329959871 s
+Avg Accuracy: 0.9959614678740502
+Avg Loss: 0.019565920270290003
+Time: 0.8338832629910939 s
 WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
-Avg Accuracy: 0.9964529118865728
-Avg Loss: 0.014098482089056145
-Time: 0.8403874370023914 s
+Avg Accuracy: 0.9959614678740502
+Avg Loss: 0.019565920270290003
+Time: 0.8412368609997429 s
 WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
-Avg Accuracy: 0.9964529116779566
-Avg Loss: 0.01409848226422628
-Time: 0.8299169199970038 s
+Avg Accuracy: 0.9959614679396153
+Avg Loss: 0.019565921283277925
+Time: 0.8682864579755005 s
 WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
-Avg Accuracy: 0.9964529116779566
-Avg Loss: 0.01409848226422628
-Time: 0.8551320450044386 s
+Avg Accuracy: 0.9959614678740502
+Avg Loss: 0.019565920270290003
+Time: 0.8406506569699559 s
 WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
-Avg Accuracy: 0.9964529117196799
-Avg Loss: 0.014098482875351422
-Time: 0.8616129809952326 s
+Avg Accuracy: 0.9959614678740502
+Avg Loss: 0.019565920270290003
+Time: 0.8654033089942459 s
 WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
-Avg Accuracy: 0.9964529117196799
-Avg Loss: 0.014098482875351422
-Time: 0.996347598002103 s
+Avg Accuracy: 0.9959614678740502
+Avg Loss: 0.019565920270290003
+Time: 0.9074992240193751 s
 WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
-Avg Accuracy: 0.9964529116779566
-Avg Loss: 0.01409848226422628
-Time: 0.9235679590044583 s
+Avg Accuracy: 0.9959614681303501
+Avg Loss: 0.019565921809542208
+Time: 0.8921551279831874 s
 WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
-Avg Accuracy: 0.9964529116779566
-Avg Loss: 0.01409848226422628
-Time: 0.8406702599995697 s
+Avg Accuracy: 0.9959614678740502
+Avg Loss: 0.019565920270290003
+Time: 0.9109684889740493 s
 WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
-Avg Accuracy: 0.9964529116779566
-Avg Loss: 0.01409848226422628
-Time: 0.8293124040051225 s
+Avg Accuracy: 0.9959614675343037
+Avg Loss: 0.019565919601064883
+Time: 0.8310425980112086 s
 WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
-Avg Accuracy: 0.9964529117196799
-Avg Loss: 0.014098482875351422
-Time: 0.8514099509950483 s
+Avg Accuracy: 0.9959614675343037
+Avg Loss: 0.019565919601064883
+Time: 0.8316682680060694 s
 WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
-Avg Accuracy: 0.9964529117196799
-Avg Loss: 0.014098482875351422
-Time: 0.8320426609985816 s
+Avg Accuracy: 0.9959614678740502
+Avg Loss: 0.019565920270290003
+Time: 0.8416477299929284 s
+WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
+WARNING: test/mnist does not exist. Trying test instead.
+Ilosc danych do testowania: 10000
+Avg Accuracy: 0.9959614678740502
+Avg Loss: 0.019565920270290003
+Time: 0.8773531230394838 s
+WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
+WARNING: test/mnist does not exist. Trying test instead.
+Ilosc danych do testowania: 10000
+Avg Accuracy: 0.9959614678740502
+Avg Loss: 0.019565920270290003
+Time: 0.8789550370138386 s
+WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
+WARNING: test/mnist does not exist. Trying test instead.
+Ilosc danych do testowania: 10000
+Avg Accuracy: 0.9959614676594735
+Avg Loss: 0.019565920153470136
+Time: 0.8736004950128518 s
+WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
+WARNING: test/mnist does not exist. Trying test instead.
+Ilosc danych do testowania: 10000
+Avg Accuracy: 0.9959614678740502
+Avg Loss: 0.019565920270290003
+Time: 0.9856243930130404 s
+WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
+WARNING: test/mnist does not exist. Trying test instead.
+Ilosc danych do testowania: 10000
+Avg Accuracy: 0.9959614679396153
+Avg Loss: 0.019565921283277925
+Time: 0.8588686239945673 s

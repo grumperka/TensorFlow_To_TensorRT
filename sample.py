@@ -68,70 +68,54 @@ import common
 # You can set the logger severity higher to suppress messages (or lower to display more messages).
 TRT_LOGGER = trt.Logger(trt.Logger.WARNING)
 
-class ModelData(object):
+class ModelData(object): 
     MODEL_FILE = "lenet5.uff"
     INPUT_NAME ="input_1"
     INPUT_SHAPE = (1, 28, 28)
-    OUTPUT_NAME = "dense_1/Softmax"
+    OUTPUT_NAME = "dense_1/Softmax" #warstwa wyjściowa, zwracająca prawdopodobieństwa
 
 def build_engine(model_file):
     # For more information on TRT basics, refer to the introductory samples.
     with trt.Builder(TRT_LOGGER) as builder, builder.create_network() as network, trt.UffParser() as parser:
         builder.max_workspace_size = common.GiB(1)
-        # Parse the Uff Network
-        parser.register_input(ModelData.INPUT_NAME, ModelData.INPUT_SHAPE)
-        parser.register_output(ModelData.OUTPUT_NAME)
+        # Parse the Uff Network - uniwersalny parser
+        parser.register_input(ModelData.INPUT_NAME, ModelData.INPUT_SHAPE) #określenie danych wejściowych
+        parser.register_output(ModelData.OUTPUT_NAME) #określenie danych wyjściowych
         parser.parse(model_file, network)
         # Build and return an engine.
         return builder.build_cuda_engine(network)
 
-# Loads a test case into the provided pagelocked_buffer.
+# Loads 1 test case into the provided pagelocked_buffer.
 def load_normalized_test_case(data_paths, pagelocked_buffer, case_num):
-    [test_case_path] = common.locate_files(data_paths, [str(case_num)])
+    [test_case_path] = common.locate_files(data_paths, [str(case_num)]) 
     # Flatten the image into a 1D array, normalize, and copy to pagelocked memory.
-    img = np.array(Image.open(test_case_path)).ravel()
-    np.copyto(pagelocked_buffer, 1.0 - img / 255.0)
+    img = np.array(Image.open(test_case_path)).ravel() #konwersja obrazu do macierzy
+    np.copyto(pagelocked_buffer, 1.0 - img / 255.0) 
     return case_num
 
+#Ladowanie nazw obrazow
 def load_files_names():
     array_list = os.listdir('test')
     return array_list
 
-
+#Utworzenie listy do obliczenia straty
 def make_label_array(x):
     array_label = np.zeros(10)
     array_label[x] = 1
     return array_label
 
-def draw_curves(acc, loss):
-    plt.figure(figsize=(12, 4))
-    #obrazek 1
-    plt.subplot(1, 2, 1)
-    plt.plot(acc, "r--")
-    plt.ylabel('Dokladnosc')
-    plt.xlabel('Przykłady')
-    plt.ylim((0.9, 1.10))
-    #obrazek 2
-    plt.subplot(1, 2, 2)
-    plt.plot(loss, "g--")
-    plt.ylabel('Straty')
-    plt.xlabel('Przykłady')
-    plt.ylim((-0.50, 0.3))
-    plt.show()
-
 def main():
     data_paths, _ = common.find_sample_data(description="Runs an MNIST network using a UFF model file", subfolder="mnist")
     model_path = os.environ.get("MODEL_PATH") or os.path.join(os.path.dirname(__file__), "models")
     model_file = os.path.join(model_path, ModelData.MODEL_FILE)
-    data_to_displayC = np.zeros(10000)
-    data_to_displayL = np.zeros(10000)
+    data_to_displayC = np.zeros(10000) #wartosci dokladnosci
+    data_to_displayL = np.zeros(10000) #wartosci straty
 
     array_files = load_files_names()
-    #print(array_files)
     print('Ilosc danych do testowania: ' + str(len(array_files)))
     i = 0
 
-    time_check = np.zeros(10000)
+    time_check = np.zeros(10000) #czas przetwarzania obrazu przez konwolucyjna siec neuronowa
 
     with build_engine(model_file) as engine:
         # Build an engine, allocate buffers and create a stream.
@@ -148,20 +132,19 @@ def main():
                 [output] = common.do_inference(context, bindings=bindings, inputs=inputs, outputs=outputs, stream=stream)
                 time_stop = time.perf_counter()
                 time_check[i] = time_stop - time_start
-                pred = np.argmax(output)
-                confidence = np.max(output)
+                pred = np.argmax(output) #cyfra o najwiekszym prawdopodobienstwie
+                confidence = np.max(output) #wartosc najwiekszego prawdopodobienstwa
                 data_to_displayC[i] = confidence
-                loss_conf_crossEntropy = - np.sum(np.log(output)*array_label)
+                loss_conf_crossEntropy = - np.sum(np.log(output)*array_label) #obliczanie straty przez funkcje cross entropy
                 data_to_displayL[i] = loss_conf_crossEntropy
                 i=i+1
                 
-    
+    #wyswietlanie
     avgC = np.average(data_to_displayC)
     avgL = np.average(data_to_displayL)
     print("Avg Accuracy: " + str(avgC))
     print("Avg Loss: " + str(avgL))
     print("Time: " + str(sum(time_check)) + ' s')
-    #draw_curves(data_to_displayC, data_to_displayL)
 
 if __name__ == '__main__':
     main()

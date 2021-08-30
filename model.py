@@ -87,12 +87,18 @@ def save(model, filename):
     # First freeze the graph and remove training nodes.
     output_names = model.output.op.name
     sess = tf.keras.backend.get_session()
-    frozen_graph = tf.graph_util.convert_variables_to_constants(sess, sess.graph.as_graph_def(), [output_names])
-    frozen_graph = tf.graph_util.remove_training_nodes(frozen_graph)
+    frozen_graph = tf.graph_util.convert_variables_to_constants(sess, sess.graph.as_graph_def(), [output_names]) #zmienne -> wierzcholki grafu
+    frozen_graph = tf.graph_util.remove_training_nodes(frozen_graph) #usuwanie np:. inicjalizacje i zapis wartosci wag
+    print('******************************************')
+    print('******************************************')
+    print('Zamrozony model: ')
     # Save the model
+    for x in frozen_graph.node:
+        print(x.name)
     with open(filename, "wb") as ofile:
         ofile.write(frozen_graph.SerializeToString())
 
+#wyswietla wykres dokladnosci i straty dla danych testowych i treningowych
 def draw_curves(history, key1='accuracy', ylim1=(0.8, 1.00), key2='loss', ylim2=(0.0, 1.0)):
     plt.figure(figsize=(12, 4))
     #obrazek 1
@@ -113,6 +119,7 @@ def draw_curves(history, key1='accuracy', ylim1=(0.8, 1.00), key2='loss', ylim2=
     plt.legend(['treningowa', 'testowa'], loc='best')
     plt.show()
 
+#wyswietla 40 obrazow ze zbioru testowego
 def display_test_pictures(x_test, y_test):
     class_names = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     plt.figure(figsize=(14, 10))
@@ -129,7 +136,7 @@ def display_test_pictures(x_test, y_test):
 def main():
     x_train, y_train, x_test, y_test = process_dataset()
 
-    datagen = ImageDataGenerator(
+    datagen = ImageDataGenerator( #do manipulacji obrazem - mala rotacja
     rotation_range=10,
     zoom_range=0.1,
     width_shift_range=0.1,
@@ -140,10 +147,10 @@ def main():
     model = create_model()
     # Train the model on the data
     history = model.fit(datagen.flow(x_train, y_train, batch_size=64), validation_data=(x_test, y_test), epochs = 18, verbose = 1)
-    # Evaluate the model on test data
 
     display_test_pictures(x_test, y_test)
 
+    # Evaluate the model on test data
     test_loss, test_acc = historyE = model.evaluate(x_test, y_test)
     print("Avg Accuracy: " + str(test_acc))
     print("Avg Loss: " + str(test_loss))
