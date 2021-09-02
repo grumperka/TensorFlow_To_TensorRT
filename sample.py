@@ -54,6 +54,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 import time
+import psutil as ps
+from pympler import asizeof
 
 import pycuda.driver as cuda
 # This import causes pycuda to automatically manage CUDA context creation and cleanup.
@@ -110,6 +112,7 @@ def main():
     model_file = os.path.join(model_path, ModelData.MODEL_FILE)
     data_to_displayC = np.zeros(10000) #wartosci dokladnosci
     data_to_displayL = np.zeros(10000) #wartosci straty
+    memory_check = np.zeros(10000)
 
     array_files = load_files_names()
     print('Ilosc danych do testowania: ' + str(len(array_files)))
@@ -121,6 +124,8 @@ def main():
         # Build an engine, allocate buffers and create a stream.
         # For more information on buffer allocation, refer to the introductory samples.
         inputs, outputs, bindings, stream = common.allocate_buffers(engine)
+        m_engine = asizeof.asizeof(engine)
+        print('--- --- --- --- Rozmiar obiektu silnika:' + str(m_engine) + ' bajtow --- --- --- ---')
         with engine.create_execution_context() as context:
             for x in array_files:
                 case_num = load_normalized_test_case(data_paths, pagelocked_buffer=inputs[0].host, case_num = x)
@@ -131,6 +136,7 @@ def main():
                 time_start = time.perf_counter()
                 [output] = common.do_inference(context, bindings=bindings, inputs=inputs, outputs=outputs, stream=stream)
                 time_stop = time.perf_counter()
+                memory_check[i] = ps.virtual_memory()[2]
                 time_check[i] = time_stop - time_start
                 pred = np.argmax(output) #cyfra o najwiekszym prawdopodobienstwie
                 confidence = np.max(output) #wartosc najwiekszego prawdopodobienstwa
@@ -142,9 +148,11 @@ def main():
     #wyswietlanie
     avgC = np.average(data_to_displayC)
     avgL = np.average(data_to_displayL)
-    print("Avg Accuracy: " + str(avgC))
-    print("Avg Loss: " + str(avgL))
-    print("Time: " + str(sum(time_check)) + ' s')
+    avgRAM = np.average(memory_check)
+    print("Avg Dokladnosc: " + str(avgC))
+    print("Avg Strata: " + str(avgL))
+    print("Czas: " + str(sum(time_check)) + ' s')
+    print("Avg Zuzycie RAM: " + str(avgRAM) + ' %')
 
 if __name__ == '__main__':
     main()

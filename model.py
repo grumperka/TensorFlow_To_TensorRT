@@ -53,7 +53,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 import os
+import time
 from PIL import Image
+
+import psutil as ps
+from pympler import asizeof
 
 def process_dataset():
     # Import the data
@@ -70,11 +74,11 @@ def process_dataset():
 def create_model():
     model = tf.keras.models.Sequential()
     model.add(tf.keras.layers.InputLayer(input_shape=[28,28, 1]))
-    model.add(tf.keras.layers.Conv2D(32, kernel_size=[3, 3], activation=tf.nn.relu, input_shape=[28, 28, 1]))
+    model.add(tf.keras.layers.Conv2D(64, kernel_size=[3, 3], activation=tf.nn.relu, input_shape=[28, 28, 1]))
     model.add(tf.keras.layers.MaxPool2D(pool_size=[2, 2])) 
     
-    model.add(tf.keras.layers.Conv2D(64, kernel_size=[3, 3], activation=tf.nn.relu))
-    model.add(tf.keras.layers.Conv2D(64, kernel_size=[3, 3], activation=tf.nn.relu))
+    model.add(tf.keras.layers.Conv2D(128, kernel_size=[3, 3], activation=tf.nn.relu))
+    model.add(tf.keras.layers.Conv2D(128, kernel_size=[3, 3], activation=tf.nn.relu))
     model.add(tf.keras.layers.MaxPool2D(pool_size=[2, 2]))
 
     model.add(tf.keras.layers.Flatten())
@@ -143,17 +147,55 @@ def main():
     height_shift_range=0.1,
     horizontal_flip=False,
     vertical_flip=False)
+
+    test_loss_avg = np.zeros(20)
+    test_acc_avg = np.zeros(20)
+    time_check = np.zeros(20)
+    memory_check = np.zeros(20)
+
+    time_start = time.perf_counter()
+    time_stop = time.perf_counter()
+
     
     model = create_model()
+    m_usage = asizeof.asizeof(model)
+    print('--- --- --- --- Rozmiar obiektu modelu:' + str(m_usage) + ' bajtow --- --- --- ---')
     # Train the model on the data
-    history = model.fit(datagen.flow(x_train, y_train, batch_size=64), validation_data=(x_test, y_test), epochs = 18, verbose = 1)
+    time_start_0 = time.perf_counter()
+    history = model.fit(datagen.flow(x_train, y_train, batch_size=128), validation_data=(x_test, y_test), epochs = 30, verbose = 1)
+    time_stop_0 = time.perf_counter()
+    time_check_0 = time_stop_0 - time_start_0
+    print('--- --- --- --- Czas trenowania: ' + str(time_check_0) + ' s --- --- --- ---')
+    print("********************************************")
 
-    display_test_pictures(x_test, y_test)
+
+    #display_test_pictures(x_test, y_test)
+
 
     # Evaluate the model on test data
-    test_loss, test_acc = historyE = model.evaluate(x_test, y_test)
-    print("Avg Accuracy: " + str(test_acc))
-    print("Avg Loss: " + str(test_loss))
+    for x in range(20):
+        time_start = time.perf_counter()
+        test_loss, test_acc = model.evaluate(x_test, y_test)
+        time_stop = time.perf_counter()
+        test_loss_avg[x] = test_loss
+        test_acc_avg[x] = test_acc
+        time_check[x] = time_stop - time_start
+        memory_check[x] = ps.virtual_memory()[2]
+        print(str(x+1) + ". Dokladnosc: " + str(test_acc))
+        print(str(x+1) + ". Strata: " + str(test_loss))
+        print(str(x+1) + ". Czas: " + str(time_check[x]))
+        print('Uzycie pamieci RAM w %:', ps.virtual_memory()[2])
+        print("********************************************")
+    
+    avgC = np.average(test_acc_avg)
+    avgL = np.average(test_loss_avg)
+    avgT = np.average(time_check)
+    avgRAM = np.average(memory_check)
+    print("********************************************")
+    print("Avg Dokladnosc: " + str(avgC))
+    print("Avg Strata: " + str(avgL))
+    print("Avg Czas: " + str(avgT) + ' s')
+    print("Avg Zuzycie RAM: " + str(avgRAM) + ' %')
     
     save(model, filename="models/lenet5.pb")
     draw_curves(history, key1='acc', ylim1=(0.7, 1.2), key2='loss', ylim2=(0.0, 0.6))
