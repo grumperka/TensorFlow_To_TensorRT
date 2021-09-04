@@ -77,8 +77,8 @@ def create_model():
     model.add(tf.keras.layers.Conv2D(32, kernel_size=[3, 3], activation=tf.nn.relu, input_shape=[28, 28, 1]))
     model.add(tf.keras.layers.MaxPool2D(pool_size=[4, 4])) 
     
-    #model.add(tf.keras.layers.Conv2D(64, kernel_size=[3, 3], activation=tf.nn.relu))
-    model.add(tf.keras.layers.Conv2D(64, kernel_size=[6, 6], activation=tf.nn.relu))
+    model.add(tf.keras.layers.Conv2D(64, kernel_size=[3, 3], activation=tf.nn.relu))
+    model.add(tf.keras.layers.Conv2D(64, kernel_size=[4, 4], activation=tf.nn.relu))
     model.add(tf.keras.layers.MaxPool2D(pool_size=[1, 1]))
 
     model.add(tf.keras.layers.Flatten())
