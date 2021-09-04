@@ -2,159 +2,165 @@ WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/d
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
 --- --- --- --- Rozmiar obiektu silnika:56 bajtow --- --- --- ---
-Avg Dokladnosc: 0.9975775343567133
-Avg Strata: 0.019106711955054277
-Czas: 1.593352703004257 s
-Avg Zuzycie RAM: 26.662440000000007 %
+Avg Dokladnosc: 0.9961973521530628
+Avg Strata: 0.016382165829846956
+Czas: 1.0475116749521476 s
+Avg Zuzycie RAM: 35.78696 %
 WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
 --- --- --- --- Rozmiar obiektu silnika:56 bajtow --- --- --- ---
-Avg Dokladnosc: 0.9975775343567133
-Avg Strata: 0.019106711955054277
-Czas: 1.339983769993296 s
-Avg Zuzycie RAM: 26.399999999999995 %
+Avg Dokladnosc: 0.9961973521530628
+Avg Strata: 0.016382165829846956
+Czas: 0.9077701059713945 s
+Avg Zuzycie RAM: 35.92926 %
 WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
 --- --- --- --- Rozmiar obiektu silnika:56 bajtow --- --- --- ---
-Avg Dokladnosc: 0.9975775340467692
-Avg Strata: 0.01910670931471549
-Czas: 1.4522281600036422 s
-Avg Zuzycie RAM: 26.399999999999995 %
+Avg Dokladnosc: 0.9961973518311977
+Avg Strata: 0.016382165718981007
+Czas: 0.8853570829924138 s
+Avg Zuzycie RAM: 35.71411 %
 WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
 --- --- --- --- Rozmiar obiektu silnika:56 bajtow --- --- --- ---
-Avg Dokladnosc: 0.9975775340467692
-Avg Strata: 0.01910670931471549
-Czas: 1.372912678986495 s
-Avg Zuzycie RAM: 26.399999999999995 %
+Avg Dokladnosc: 0.9961973517417908
+Avg Strata: 0.016382166275126467
+Czas: 0.8569553659863232 s
+Avg Zuzycie RAM: 35.657230000000006 %
 WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
 --- --- --- --- Rozmiar obiektu silnika:56 bajtow --- --- --- ---
-Avg Dokladnosc: 0.9975775343567133
-Avg Strata: 0.019106711955054277
-Czas: 1.3378432450001583 s
-Avg Zuzycie RAM: 26.399999999999995 %
+Avg Dokladnosc: 0.9961973518311977
+Avg Strata: 0.016382165718981007
+Czas: 0.8498034060266946 s
+Avg Zuzycie RAM: 35.60000000000001 %
 WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
 --- --- --- --- Rozmiar obiektu silnika:56 bajtow --- --- --- ---
-Avg Dokladnosc: 0.9975775340467692
-Avg Strata: 0.01910670931471549
-Czas: 1.3421460689928608 s
-Avg Zuzycie RAM: 26.399999999999995 %
+Avg Dokladnosc: 0.9961973517715931
+Avg Strata: 0.01638216637717323
+Czas: 0.8479419480445358 s
+Avg Zuzycie RAM: 35.60000000000001 %
 WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
 --- --- --- --- Rozmiar obiektu silnika:56 bajtow --- --- --- ---
-Avg Dokladnosc: 0.9975775343567133
-Avg Strata: 0.019106711955054277
-Czas: 1.3687638829967455 s
-Avg Zuzycie RAM: 26.496509999999997 %
+Avg Dokladnosc: 0.9961973517417908
+Avg Strata: 0.016382166275126467
+Czas: 0.926153849012735 s
+Avg Zuzycie RAM: 35.73794 %
 WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
 --- --- --- --- Rozmiar obiektu silnika:56 bajtow --- --- --- ---
-Avg Dokladnosc: 0.9975775340467692
-Avg Strata: 0.01910670931471549
-Czas: 1.341271625999525 s
-Avg Zuzycie RAM: 26.53933 %
+Avg Dokladnosc: 0.9961973521530628
+Avg Strata: 0.016382165829846956
+Czas: 0.8535447810227197 s
+Avg Zuzycie RAM: 35.820429999999995 %
 WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
 --- --- --- --- Rozmiar obiektu silnika:56 bajtow --- --- --- ---
-Avg Dokladnosc: 0.9975775343567133
-Avg Strata: 0.019106711955054277
-Czas: 1.3308332319929832 s
-Avg Zuzycie RAM: 26.457339999999995 %
+Avg Dokladnosc: 0.9961973518937827
+Avg Strata: 0.01638216688981974
+Czas: 0.880026696009736 s
+Avg Zuzycie RAM: 35.724549999999994 %
 WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
 --- --- --- --- Rozmiar obiektu silnika:56 bajtow --- --- --- ---
-Avg Dokladnosc: 0.9975775343567133
-Avg Strata: 0.019106711955054277
-Czas: 1.4135445999907006 s
-Avg Zuzycie RAM: 26.399999999999995 %
+Avg Dokladnosc: 0.9961973518937827
+Avg Strata: 0.01638216688981974
+Czas: 0.8522303069930786 s
+Avg Zuzycie RAM: 35.68659 %
 WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
 --- --- --- --- Rozmiar obiektu silnika:56 bajtow --- --- --- ---
-Avg Dokladnosc: 0.9975775343567133
-Avg Strata: 0.019106711955054277
-Czas: 1.5381172699910621 s
-Avg Zuzycie RAM: 26.399999999999995 %
+Avg Dokladnosc: 0.9961973518311977
+Avg Strata: 0.016382165718981007
+Czas: 0.9295544109754701 s
+Avg Zuzycie RAM: 35.63076000000001 %
 WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
 --- --- --- --- Rozmiar obiektu silnika:56 bajtow --- --- --- ---
-Avg Dokladnosc: 0.9975775343567133
-Avg Strata: 0.019106711955054277
-Czas: 1.352947436012073 s
-Avg Zuzycie RAM: 26.399999999999995 %
+Avg Dokladnosc: 0.9961973517715931
+Avg Strata: 0.01638216637717323
+Czas: 0.995823430938799 s
+Avg Zuzycie RAM: 35.60000000000001 %
 WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
 --- --- --- --- Rozmiar obiektu silnika:56 bajtow --- --- --- ---
-Avg Dokladnosc: 0.9975775343567133
-Avg Strata: 0.019106711955054277
-Czas: 1.3488484179979423 s
-Avg Zuzycie RAM: 26.399999999999995 %
+Avg Dokladnosc: 0.9961973517715931
+Avg Strata: 0.01638216637717323
+Czas: 0.9306072029912684 s
+Avg Zuzycie RAM: 35.62321 %
 WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
 --- --- --- --- Rozmiar obiektu silnika:56 bajtow --- --- --- ---
-Avg Dokladnosc: 0.9975775343567133
-Avg Strata: 0.019106711955054277
-Czas: 1.3301301130163665 s
-Avg Zuzycie RAM: 26.399999999999995 %
+Avg Dokladnosc: 0.9961973518311977
+Avg Strata: 0.016382165718981007
+Czas: 0.8838794389967006 s
+Avg Zuzycie RAM: 35.63552000000001 %
 WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
 --- --- --- --- Rozmiar obiektu silnika:56 bajtow --- --- --- ---
-Avg Dokladnosc: 0.9975775343567133
-Avg Strata: 0.019106711955054277
-Czas: 1.3551795819951167 s
-Avg Zuzycie RAM: 26.399999999999995 %
+Avg Dokladnosc: 0.9961973518311977
+Avg Strata: 0.016382165718981007
+Czas: 0.887366362978355 s
+Avg Zuzycie RAM: 35.60000000000001 %
 WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
 --- --- --- --- Rozmiar obiektu silnika:56 bajtow --- --- --- ---
-Avg Dokladnosc: 0.9975775343567133
-Avg Strata: 0.019106711955054277
-Czas: 1.3386459710100098 s
-Avg Zuzycie RAM: 26.399999999999995 %
+Avg Dokladnosc: 0.9961973518311977
+Avg Strata: 0.016382165718981007
+Czas: 0.8838146420821431 s
+Avg Zuzycie RAM: 35.60000000000001 %
 WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
 --- --- --- --- Rozmiar obiektu silnika:56 bajtow --- --- --- ---
-Avg Dokladnosc: 0.9975775340467692
-Avg Strata: 0.01910670931471549
-Czas: 1.4599180059976788 s
-Avg Zuzycie RAM: 26.399999999999995 %
+Avg Dokladnosc: 0.9961973516583442
+Avg Strata: 0.016382164947779342
+Czas: 0.8648508709702583 s
+Avg Zuzycie RAM: 35.60000000000001 %
 WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
 --- --- --- --- Rozmiar obiektu silnika:56 bajtow --- --- --- ---
-Avg Dokladnosc: 0.9975775343567133
-Avg Strata: 0.019106711955054277
-Czas: 1.369952930990621 s
-Avg Zuzycie RAM: 26.399999999999995 %
+Avg Dokladnosc: 0.9961973517417908
+Avg Strata: 0.016382166275126467
+Czas: 0.8850277869687488 s
+Avg Zuzycie RAM: 35.60000000000001 %
 WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
 --- --- --- --- Rozmiar obiektu silnika:56 bajtow --- --- --- ---
-Avg Dokladnosc: 0.9975775340467692
-Avg Strata: 0.01910670931471549
-Czas: 1.3363326639910156 s
-Avg Zuzycie RAM: 26.399999999999995 %
+Avg Dokladnosc: 0.9961973521530628
+Avg Strata: 0.016382165829846956
+Czas: 0.844227712988868 s
+Avg Zuzycie RAM: 35.60000000000001 %
 WARNING: /usr/src/tensorrt/data/mnist does not exist. Trying /usr/src/tensorrt/data instead.
 WARNING: test/mnist does not exist. Trying test instead.
 Ilosc danych do testowania: 10000
 --- --- --- --- Rozmiar obiektu silnika:56 bajtow --- --- --- ---
-Avg Dokladnosc: 0.9975775343567133
-Avg Strata: 0.019106711955054277
-Czas: 1.3567300439874543 s
-Avg Zuzycie RAM: 26.399999999999995 %
+Avg Dokladnosc: 0.9961973518937827
+Avg Strata: 0.01638216688981974
+Czas: 0.8447649559821002 s
+Avg Zuzycie RAM: 35.60000000000001 %
+********************************************
+********************************************
+TOTAL Avg Dokladnosc: 0.9961973518739642
+TOTAL Avg Strata: 0.01638216606037058
+TOTAL Czas: 0.8928606016442224 s
+TOTAL Avg Zuzycie RAM: 35.66732800000001 %

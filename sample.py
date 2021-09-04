@@ -107,52 +107,73 @@ def make_label_array(x):
     return array_label
 
 def main():
-    data_paths, _ = common.find_sample_data(description="Runs an MNIST network using a UFF model file", subfolder="mnist")
-    model_path = os.environ.get("MODEL_PATH") or os.path.join(os.path.dirname(__file__), "models")
-    model_file = os.path.join(model_path, ModelData.MODEL_FILE)
-    data_to_displayC = np.zeros(10000) #wartosci dokladnosci
-    data_to_displayL = np.zeros(10000) #wartosci straty
-    memory_check = np.zeros(10000)
+    total_avg_C = 0
+    total_avg_L = 0
+    total_avg_T = 0
+    total_avg_RAM = 0
 
-    array_files = load_files_names()
-    print('Ilosc danych do testowania: ' + str(len(array_files)))
-    i = 0
+    for y in range(20):
+        data_paths, _ = common.find_sample_data(description="Runs an MNIST network using a UFF model file", subfolder="mnist")
+        model_path = os.environ.get("MODEL_PATH") or os.path.join(os.path.dirname(__file__), "models")
+        model_file = os.path.join(model_path, ModelData.MODEL_FILE)
+        data_to_displayC = np.zeros(10000) #wartosci dokladnosci
+        data_to_displayL = np.zeros(10000) #wartosci straty
+        memory_check = np.zeros(10000)
 
-    time_check = np.zeros(10000) #czas przetwarzania obrazu przez konwolucyjna siec neuronowa
+        array_files = load_files_names()
+        print('Ilosc danych do testowania: ' + str(len(array_files)))
+        i = 0
 
-    with build_engine(model_file) as engine:
-        # Build an engine, allocate buffers and create a stream.
-        # For more information on buffer allocation, refer to the introductory samples.
-        inputs, outputs, bindings, stream = common.allocate_buffers(engine)
-        m_engine = asizeof.asizeof(engine)
-        print('--- --- --- --- Rozmiar obiektu silnika:' + str(m_engine) + ' bajtow --- --- --- ---')
-        with engine.create_execution_context() as context:
-            for x in array_files:
-                case_num = load_normalized_test_case(data_paths, pagelocked_buffer=inputs[0].host, case_num = x)
-                number = int(x[0])
-                array_label = make_label_array(number)
-                # For more information on performing inference, refer to the introductory samples.
-                # The common.do_inference function will return a list of outputs - we only have one in this case.
-                time_start = time.perf_counter()
-                [output] = common.do_inference(context, bindings=bindings, inputs=inputs, outputs=outputs, stream=stream)
-                time_stop = time.perf_counter()
-                memory_check[i] = ps.virtual_memory()[2]
-                time_check[i] = time_stop - time_start
-                pred = np.argmax(output) #cyfra o najwiekszym prawdopodobienstwie
-                confidence = np.max(output) #wartosc najwiekszego prawdopodobienstwa
-                data_to_displayC[i] = confidence
-                loss_conf_crossEntropy = - np.sum(np.log(output)*array_label) #obliczanie straty przez funkcje cross entropy
-                data_to_displayL[i] = loss_conf_crossEntropy
-                i=i+1
-                
-    #wyswietlanie
-    avgC = np.average(data_to_displayC)
-    avgL = np.average(data_to_displayL)
-    avgRAM = np.average(memory_check)
-    print("Avg Dokladnosc: " + str(avgC))
-    print("Avg Strata: " + str(avgL))
-    print("Czas: " + str(sum(time_check)) + ' s')
-    print("Avg Zuzycie RAM: " + str(avgRAM) + ' %')
+        time_check = np.zeros(10000) #czas przetwarzania obrazu przez konwolucyjna siec neuronowa
+
+        with build_engine(model_file) as engine:
+            # Build an engine, allocate buffers and create a stream.
+            # For more information on buffer allocation, refer to the introductory samples.
+            inputs, outputs, bindings, stream = common.allocate_buffers(engine)
+            m_engine = asizeof.asizeof(engine)
+            print('--- --- --- --- Rozmiar obiektu silnika:' + str(m_engine) + ' bajtow --- --- --- ---')
+            with engine.create_execution_context() as context:
+                for x in array_files:
+                    case_num = load_normalized_test_case(data_paths, pagelocked_buffer=inputs[0].host, case_num = x)
+                    number = int(x[0])
+                    array_label = make_label_array(number)
+                    # For more information on performing inference, refer to the introductory samples.
+                    # The common.do_inference function will return a list of outputs - we only have one in this case.
+                    time_start = time.perf_counter()
+                    [output] = common.do_inference(context, bindings=bindings, inputs=inputs, outputs=outputs, stream=stream)
+                    time_stop = time.perf_counter()
+                    memory_check[i] = ps.virtual_memory()[2]
+                    time_check[i] = time_stop - time_start
+                    pred = np.argmax(output) #cyfra o najwiekszym prawdopodobienstwie
+                    confidence = np.max(output) #wartosc najwiekszego prawdopodobienstwa
+                    data_to_displayC[i] = confidence
+                    loss_conf_crossEntropy = - np.sum(np.log(output)*array_label) #obliczanie straty przez funkcje cross entropy
+                    data_to_displayL[i] = loss_conf_crossEntropy
+                    i=i+1
+                    
+        #wyswietlanie
+        avgC = np.average(data_to_displayC)
+        total_avg_C = total_avg_C + avgC
+        avgL = np.average(data_to_displayL)
+        total_avg_L = total_avg_L + avgL
+        avgRAM = np.average(memory_check)
+        total_avg_RAM = total_avg_RAM + avgRAM
+        total_avg_T = total_avg_T + time_check
+        print("Avg Dokladnosc: " + str(avgC))
+        print("Avg Strata: " + str(avgL))
+        print("Czas: " + str(sum(time_check)) + ' s')
+        print("Avg Zuzycie RAM: " + str(avgRAM) + ' %')
+
+    total_avg_C = total_avg_C / 20
+    total_avg_L = total_avg_L / 20
+    total_avg_RAM = total_avg_RAM / 20
+    total_avg_T = total_avg_T / 20
+    print("********************************************")
+    print("********************************************")
+    print("TOTAL Avg Dokladnosc: " + str(total_avg_C))
+    print("TOTAL Avg Strata: " + str(total_avg_L))
+    print("TOTAL Czas: " + str(sum(total_avg_T)) + ' s')
+    print("TOTAL Avg Zuzycie RAM: " + str(total_avg_RAM) + ' %')
 
 if __name__ == '__main__':
     main()
