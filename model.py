@@ -75,7 +75,7 @@ def create_model():
     model = tf.keras.models.Sequential()
     model.add(tf.keras.layers.InputLayer(input_shape=[28,28, 1]))
     model.add(tf.keras.layers.Conv2D(32, kernel_size=[3, 3], activation=tf.nn.relu, input_shape=[28, 28, 1]))
-    model.add(tf.keras.layers.MaxPool2D(pool_size=[2, 2])) 
+    model.add(tf.keras.layers.MaxPool2D(pool_size=[4, 4])) 
     
     model.add(tf.keras.layers.Conv2D(64, kernel_size=[3, 3], activation=tf.nn.relu))
     model.add(tf.keras.layers.Conv2D(64, kernel_size=[3, 3], activation=tf.nn.relu))
@@ -162,7 +162,7 @@ def main():
     print('--- --- --- --- Rozmiar obiektu modelu:' + str(m_usage) + ' bajtow --- --- --- ---')
     # Train the model on the data
     time_start_0 = time.perf_counter()
-    history = model.fit(datagen.flow(x_train, y_train, batch_size=128), validation_data=(x_test, y_test), epochs = 30, verbose = 1)
+    history = model.fit(datagen.flow(x_train, y_train, batch_size=64), validation_data=(x_test, y_test), epochs = 25, verbose = 1)
     time_stop_0 = time.perf_counter()
     time_check_0 = time_stop_0 - time_start_0
     print('--- --- --- --- Czas trenowania: ' + str(time_check_0) + ' s --- --- --- ---')
