@@ -84,7 +84,7 @@ def create_model():
     model.add(tf.keras.layers.Flatten())
     model.add(tf.keras.layers.Dense(16, activation=tf.nn.relu))
     model.add(tf.keras.layers.Dense(10, activation=tf.nn.softmax))
-    model.compile(optimizer='nadam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+    model.compile(optimizer='ftrl', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
     return model
 
 def save(model, filename):
@@ -198,7 +198,7 @@ def main():
     print("Avg Zuzycie RAM: " + str(avgRAM) + ' %')
     
     save(model, filename="models/lenet5.pb")
-    draw_curves(history, key1='acc', ylim1=(0.0, 1.2), key2='loss', ylim2=(0.0, 1.2))
+    draw_curves(history, key1='acc', ylim1=(0.0, 1.0), key2='loss', ylim2=(0.0, 3.0))
 
 if __name__ == '__main__':
     main()
