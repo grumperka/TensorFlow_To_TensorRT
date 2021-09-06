@@ -84,7 +84,7 @@ def create_model():
     model.add(tf.keras.layers.Flatten())
     model.add(tf.keras.layers.Dense(16, activation=tf.nn.relu))
     model.add(tf.keras.layers.Dense(10, activation=tf.nn.softmax))
-    model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+    model.compile(optimizer='adamax', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
     return model
 
 def save(model, filename):
