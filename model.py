@@ -84,7 +84,7 @@ def create_model():
     model.add(tf.keras.layers.Flatten())
     model.add(tf.keras.layers.Dense(16, activation=tf.nn.relu))
     model.add(tf.keras.layers.Dense(10, activation=tf.nn.softmax))
-    model.compile(optimizer='ftrl', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+    model.compile(optimizer='sgd', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
     return model
 
 def save(model, filename):
@@ -168,9 +168,7 @@ def main():
     print('--- --- --- --- Czas trenowania: ' + str(time_check_0) + ' s --- --- --- ---')
     print("********************************************")
 
-
-    #display_test_pictures(x_test, y_test)
-
+    display_test_pictures(x_test, y_test)
 
     # Evaluate the model on test data
     for x in range(20):
